@@ -468,6 +468,78 @@ SMODS.Joker{
   end,
 }
 
+SMODS.Atlas{
+  key = "stone_mask",
+  path = "j_stone_mask.png",
+  px = 73,
+  py = 96,
+}
+SMODS.Joker{
+  key = "stone_mask",
+  config = { },
+  pos = {x = 0, y = 0},
+  rarity = 2,
+  cost = 6,
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue+1] = {key = "creator_deepdawn", set = "Other"}
+  end,
+  atlas = "stone_mask",
+  unlocked = true,
+  discovered = false,
+  eternal_compat = true,
+  blueprint_compat = true,
+  perishable_compat = true,
+  calculate = function(self, card, context)
+    if context.individual and context.cardarea == G.play and context.other_card.ability.effect == "Stone Card" and not context.blueprint and context.other_card:get_edition() == nil then
+      local edition = poll_edition('stone_mask', nil, true, true)
+      context.other_card:set_edition(edition)
+    end
+  end,
+}
+
+SMODS.Atlas{
+  key = "clown_pennywise",
+  path = "j_pennywise.png",
+  px = 73,
+  py = 96,
+}
+SMODS.Joker{
+  key = "clown_pennywise",
+  config = { extra = { bonus = 2, mult = 2 } },
+  pos = {x = 0, y = 0},
+  rarity = 2,
+  cost = 6,
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue+1] = {key = "creator_deepdawn", set = "Other"}
+    return { vars = { card.ability.extra.bonus, card.ability.extra.mult }}
+  end,
+  atlas = "clown_pennywise",
+  unlocked = true,
+  discovered = false,
+  eternal_compat = true,
+  blueprint_compat = true,
+  perishable_compat = true,
+  calculate = function(self, card, context)
+    if context.joker_main then
+      return {
+        mult_mod = card.ability.extra.mult,
+        message = localize{type = 'variable', key = 'a_mult', vars = {card.ability.extra.mult}},
+      }
+    end
+    if context.individual and context.cardarea == G.play and not context.blueprint then
+      if G.GAME.current_round.hands_played == 0 then
+        if context.other_card:get_id() == 2 or
+          context.other_card:get_id() == 3 or
+          context.other_card:get_id() == 4 or
+          context.other_card:get_id() == 5 then
+            card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.bonus
+            context.other_card:start_dissolve()
+        end
+      end
+    end
+  end,
+}
+
 
 local evaluate_poker_hand_ref = evaluate_poker_hand
 function evaluate_poker_hand(hand)
@@ -489,12 +561,6 @@ Uncommon
 
 Starmapper Deck
 Planet cards improve their respective hands by two levels instead of one
-
-Clown Pennywise
-If first played poker hand of the round scores 2, 3, 4 or 5, destroy them and gain +2 Mult for each. (Currently +2 Mult)
-
-Stone Mask
-Stone cards gain a random edition when scored (Foil, Holographic or Polychrome)
 
 Bana-Nana Fruit
 +300 Chips. 1 in 5000 chance this card is destroyed at the end of each round. (Only appears in shops if Cavendish was destroyed by its 1 in 1000 effect during this run)

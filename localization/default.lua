@@ -62,9 +62,24 @@ return {
             j_bcp_passport = {
                 name = "Passport Joker",
                 text = {
-                  "gives benefits of joker to the right",
+                  "Gives benefits of joker to the right",
                   "{C:attention}ignoring{} the condition",
                   "{C:attention}#1#{}"
+              }
+            },
+            j_bcp_stone_mask = {
+                name = "Stone Mask",
+                text = {
+                  "Stone cards gain a random edition when scored"
+              }
+            },
+            j_bcp_clown_pennywise = {
+                name = "Stone Mask",
+                text = {
+                  "If first played poker hand",
+                  "of the round scores 2, 3, 4 or 5,",
+                  "destroy them and gain {C:mult}+#1# mult{} for each.",
+                  "(Currently {C:mult}+#2# mult{})"
               }
             },
         },
