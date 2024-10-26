@@ -18,26 +18,26 @@ SMODS.Atlas({
 SMODS.Atlas({
   key = "background",
   path = "j_background.png",
-  px = 71,
-  py = 95,
+  px = 69,
+  py = 93,
 })
 SMODS.Atlas({
   key = "executioner",
   path = "j_executioner.png",
-  px = 71,
-  py = 95,
+  px = 73,
+  py = 96,
 })
 SMODS.Atlas({
   key = "freesample",
   path = "j_freesample.png",
-  px = 71,
-  py = 95,
+  px = 69,
+  py = 93,
 })
 SMODS.Atlas({
   key = "inverted",
   path = "j_inverted.png",
-  px = 71,
-  py = 95,
+  px = 69,
+  py = 93,
 })
 SMODS.Atlas({
   key = "missingtexture",
@@ -48,20 +48,20 @@ SMODS.Atlas({
 SMODS.Atlas({
   key = "notfound",
   path = "j_notfound.png",
-  px = 71,
-  py = 95,
+  px = 69,
+  py = 93,
 })
 SMODS.Atlas({
   key = "passport",
   path = "j_passport.png",
-  px = 71,
+  px = 69,
   py = 95,
 })
 SMODS.Atlas({
   key = "ultimace",
   path = "j_ultimace.png",
-  px = 71,
-  py = 95,
+  px = 68,
+  py = 91,
 })
 
 SMODS.Joker{
