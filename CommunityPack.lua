@@ -1,84 +1,29 @@
 --- STEAMODDED HEADER
---- MOD_NAME: Balamod Community Pack
+--- MOD_NAME: Balatro Community Pack
 --- MOD_ID: CommunityPack
 --- MOD_AUTHOR: [GoldenEpsilon, elbe]
---- MOD_DESCRIPTION: Balamod Community Pack 
+--- MOD_DESCRIPTION: Balatro Community Pack 
 --- BADGE_COLOUR: C9A926
 --- PREFIX: bcp
 
 ----------------------------------------------
 ------------MOD CODE -------------------------
 
-SMODS.Atlas({
-  key = "baba",
-  path = "j_baba.png",
-  px = 71,
-  py = 95,
-})
-SMODS.Atlas({
-  key = "background",
-  path = "j_background.png",
-  px = 69,
-  py = 93,
-})
-SMODS.Atlas({
-  key = "executioner",
-  path = "j_executioner.png",
-  px = 73,
-  py = 96,
-})
-SMODS.Atlas({
-  key = "freesample",
-  path = "j_freesample.png",
-  px = 69,
-  py = 93,
-})
-SMODS.Atlas({
-  key = "inverted",
-  path = "j_inverted.png",
-  px = 69,
-  py = 93,
-})
-SMODS.Atlas({
-  key = "missingtexture",
-  path = "j_missingtexture.png",
-  px = 71,
-  py = 95,
-})
-SMODS.Atlas({
-  key = "notfound",
-  path = "j_notfound.png",
-  px = 69,
-  py = 93,
-})
-SMODS.Atlas({
-  key = "passport",
-  path = "j_passport.png",
-  px = 69,
-  py = 95,
-})
-SMODS.Atlas({
+SMODS.Atlas{
   key = "ultimace",
   path = "j_ultimace.png",
   px = 68,
   py = 91,
-})
-
+}
 SMODS.Joker{
   key = "ultimace",
-  loc_txt = {
-      name = "UltimAce",
-      text = {
-        "When an {C:attention}Enhanced Ace{} is scored,",
-        "Retrigger it"
-    }
-  },
   config = {extra = {repetitions = 1}},
   pos = {x = 0, y = 0},
   rarity = 3,
   cost = 8,
   loc_vars = function(self, info_queue, card)
-  return {vars = {}}
+    info_queue[#info_queue+1] = {key = "creator_revenge", set = "Other"}
+    return {vars = {}}
   end,
   atlas = "ultimace",
   unlocked = true,
@@ -100,22 +45,16 @@ SMODS.Joker{
       end
     end
   end,
-  set_sprites = function(self, card, front)
-  end,
-  set_ability = function(self, card, initial, delay_sprites)
-  end,
-  load = function(self, card, card_table, other_card)
-  end
+}
+
+SMODS.Atlas{
+  key = "baba",
+  path = "j_baba.png",
+  px = 71,
+  py = 95,
 }
 SMODS.Joker{
   key = "baba",
-  loc_txt = {
-      name = "Baba",
-      text = {
-        "Gives {X:red,C:white} X#1# {} Mult if played hand is a",
-        "{C:attention}#2#{} or {C:attention}#3#{}"
-    }
-  },
   config = {
     extra = {
         x_mult = 3,
@@ -127,6 +66,7 @@ SMODS.Joker{
   rarity = 3,
   cost = 5,
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue+1] = {key = "creator_sairya", set = "Other"}
     return {vars = {
       card.ability.extra.x_mult,
       localize(card.ability.extra.type1, 'poker_hands'),
@@ -148,27 +88,22 @@ SMODS.Joker{
       }
     end
   end,
-  set_sprites = function(self, card, front)
-  end,
-  set_ability = function(self, card, initial, delay_sprites)
-  end,
-  load = function(self, card, card_table, other_card)
-  end
+}
+
+SMODS.Atlas{
+  key = "missingtexture",
+  path = "j_missingtexture.png",
+  px = 71,
+  py = 95,
 }
 SMODS.Joker{
   key = "missingtexture",
-  loc_txt = {
-      name = "Missing Texture",
-      text = {
-        "{C:attention}Two Pair{} counts as",
-        "{C:attention}Four Of A Kind{}"
-    }
-  },
   config = {},
   pos = {x = 0, y = 0},
   rarity = 2,
   cost = 5,
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue+1] = {key = "creator_revenge", set = "Other"}
     return {vars = {}}
   end,
   atlas = "missingtexture",
@@ -177,30 +112,22 @@ SMODS.Joker{
   eternal_compat = true,
   blueprint_compat = true,
   perishable_compat = true,
-  calculate = function(self, card, context)
-  end,
-  set_sprites = function(self, card, front)
-  end,
-  set_ability = function(self, card, initial, delay_sprites)
-  end,
-  load = function(self, card, card_table, other_card)
-  end
+}
+
+SMODS.Atlas{
+  key = "background",
+  path = "j_background.png",
+  px = 69,
+  py = 93,
 }
 SMODS.Joker{
   key = "background",
-  loc_txt = {
-      name = "Background",
-      text = {
-        "Give mult equal the square of",
-        "the number of hands",
-        "that can be made out of your scored cards"
-    }
-  },
   config = {},
   pos = {x = 0, y = 0},
   rarity = 2,
   cost = 5,
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue+1] = {key = "creator_revenge", set = "Other"}
     return {vars = {}}
   end,
   atlas = "background",
@@ -222,23 +149,16 @@ SMODS.Joker{
       }
     end
   end,
-  set_sprites = function(self, card, front)
-  end,
-  set_ability = function(self, card, initial, delay_sprites)
-  end,
-  load = function(self, card, card_table, other_card)
-  end
+}
+
+SMODS.Atlas{
+  key = "inverted",
+  path = "j_inverted.png",
+  px = 69,
+  py = 93,
 }
 SMODS.Joker{
   key = "inverted",
-  loc_txt = {
-      name = "Inverted Joker",
-      text = {
-        "After 3 rounds,",
-        "sell this to gain ",
-        "a free {C:attention}Negative Tag{}"
-    }
-  },
   config = {
       extra = {
         counter = 0,
@@ -249,6 +169,7 @@ SMODS.Joker{
   rarity = 3,
   cost = 5,
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue+1] = {key = "creator_mysticsailbo", set = "Other"}
     return {vars = {}}
   end,
   atlas = "inverted",
@@ -280,22 +201,16 @@ SMODS.Joker{
       }))
     end
   end,
-  set_sprites = function(self, card, front)
-  end,
-  set_ability = function(self, card, initial, delay_sprites)
-  end,
-  load = function(self, card, card_table, other_card)
-  end
+}
+
+SMODS.Atlas{
+  key = "freesample",
+  path = "j_freesample.png",
+  px = 69,
+  py = 93,
 }
 SMODS.Joker{
   key = "freesample",
-  loc_txt = {
-      name = "Free Sample",
-      text = {
-        "+1 hand if poker hand is a {C:attention}#1#{}",
-        "Poker hand changes every hand"
-    }
-  },
   config = {
       extra = {
           hands = 1,
@@ -306,6 +221,7 @@ SMODS.Joker{
   rarity = 1,
   cost = 4,
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue+1] = {key = "creator_mysticsailbo", set = "Other"}
     return {vars = {localize(card.ability.extra.poker_hand, 'poker_hands')}}
   end,
   atlas = "freesample",
@@ -334,21 +250,16 @@ SMODS.Joker{
       end
     end
   end,
-  set_sprites = function(self, card, front)
-  end,
-  set_ability = function(self, card, initial, delay_sprites)
-  end,
-  load = function(self, card, card_table, other_card)
-  end
+}
+
+SMODS.Atlas{
+  key = "notfound",
+  path = "j_notfound.png",
+  px = 69,
+  py = 93,
 }
 SMODS.Joker{
   key = "notfound",
-  loc_txt = {
-      name = "Joker Not Found",
-      text = {
-        "{C:attention}#1#{} in {C:attention}#2#{} chance to add {C:chips}#3#{} chips" -- should be set chips to 404, but that's hard to do
-    }
-  },
   config = {
       extra = {
           chip_mod = 404,
@@ -359,6 +270,7 @@ SMODS.Joker{
   rarity = 1,
   cost = 4,
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue+1] = {key = "creator_mysticsailbo", set = "Other"}
     return {vars = {
       G.GAME.probabilities.normal,
       card.ability.extra.odds,
@@ -373,36 +285,28 @@ SMODS.Joker{
   perishable_compat = true,
   calculate = function(self, card, context)
     if context.joker_main then
-      if pseudorandom('notfound') < G.GAME.probabilities.normal/card.ability.extra.odds then
-        return {
-            message = localize{type='variable',key='a_chips',vars={card.ability.extra.chip_mod}},
-            chip_mod = card.ability.extra.chip_mod,
-        }
+     if pseudorandom('notfound') < G.GAME.probabilities.normal/card.ability.extra.odds then
+        card:juice_up(0.3, 0.5)
+        hand_chips.array[1] = 404
     end
     end
   end,
-  set_sprites = function(self, card, front)
-  end,
-  set_ability = function(self, card, initial, delay_sprites)
-  end,
-  load = function(self, card, card_table, other_card)
-  end
+}
+
+SMODS.Atlas{
+  key = "executioner",
+  path = "j_executioner.png",
+  px = 73,
+  py = 96,
 }
 SMODS.Joker{
   key = "executioner",
-  loc_txt = {
-      name = "Executioner",
-      text = {
-        "If first played poker hand of the round is a {C:attention}#1#{},",
-        "destroy all cards scored in it.",
-        "Poker hand changes every round"
-    }
-  },
   config = { extra = { hand = "High Card", active = 0 }},
   pos = {x = 0, y = 0},
   rarity = 3,
   cost = 8,
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue+1] = {key = "creator_deepdawn", set = "Other"}
     return {vars = {
       localize(card.ability.extra.hand, 'poker_hands')
     }}
@@ -458,28 +362,22 @@ SMODS.Joker{
     end
     end
   end,
-  set_sprites = function(self, card, front)
-  end,
-  set_ability = function(self, card, initial, delay_sprites)
-  end,
-  load = function(self, card, card_table, other_card)
-  end
+}
+
+SMODS.Atlas{
+  key = "passport",
+  path = "j_passport.png",
+  px = 69,
+  py = 95,
 }
 SMODS.Joker{
   key = "passport",
-  loc_txt = {
-      name = "Passport Joker",
-      text = {
-        "gives benefits of joker to the right",
-        "{C:attention}ignoring{} the condition",
-        "{C:attention}#1#{}"
-    }
-  },
   config = { },
   pos = {x = 0, y = 0},
   rarity = 3,
   cost = 8,
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue+1] = {key = "creator_assassinchara", set = "Other"}
     local other_joker = nil
     if G.jokers then
         for i = 1, #G.jokers.cards do
@@ -568,12 +466,6 @@ SMODS.Joker{
       end
     end
   end,
-  set_sprites = function(self, card, front)
-  end,
-  set_ability = function(self, card, initial, delay_sprites)
-  end,
-  load = function(self, card, card_table, other_card)
-  end
 }
 
 
@@ -589,7 +481,221 @@ function evaluate_poker_hand(hand)
   return ret
 end
 
+----- Suggestions ----
+--[[
+Card Mechanic
+Jokers and playing cards cards cannot be destroyed
+Uncommon
 
+Starmapper Deck
+Planet cards improve their respective hands by two levels instead of one
+
+Clown Pennywise
+If first played poker hand of the round scores 2, 3, 4 or 5, destroy them and gain +2 Mult for each. (Currently +2 Mult)
+
+Stone Mask
+Stone cards gain a random edition when scored (Foil, Holographic or Polychrome)
+
+Bana-Nana Fruit
++300 Chips. 1 in 5000 chance this card is destroyed at the end of each round. (Only appears in shops if Cavendish was destroyed by its 1 in 1000 effect during this run)
+
+Split
+When a Glass card gets destroyed, add 2 copies of it to your deck. (1 in 4 chance to destroy this Joker when it gets triggered) 
+
+Pear
+Uncommon
+Gains x0.5 mult per discard left at the end of round, resets after boss blind. 1  in 4 chance this card is destroyed at the end of each round
+(Currently 1x mult) 
+
+RNjoker
+Uncommon
+When this joker bought, create a random rare joker
+
+Bluberries
+Uncommon
+Clubs give +Mult equal to 2x their rank when played. 1 in 4 chance this card is destroyed at the end of each round
+(ex: 9 of clubs played gives 18 mult) 
+
+Call-In Joker
+Rare
+Once per blind, when hand is played and this Joker is selected (click to select) , your hand counts as your most played one.
+
+The Dunce
+Common
+Per card scored, 1 in 2 chance to destroy it and give 20 chips. 1 in 15 chance this is destroyed at end of round.
+
+Sandwich (uncommon)
+Calculate the joker score first and last. (Can only be used by 10 hands)
+(In order as follows: Joker > play hands > held in hand > Joker)
+
+This is a common joker called "help wanted"
+Effect: all common jokers are forced to have  an addition, that being foil, etched, pallycrome or negative (the chance between the 4 reflects the differences between the normal chances)
+
+Kaizo
+Legendary
+Each round, destroy all Jokers to it's right. Gain permament xMult equal sell cost of all of them.
+
+Threshold
+Rare
+$9
+A planet card of the least played card inherits the properties of the black hole.
+(Current Planet: [insert planet]
+
+Cherries
+Uncommon
+Hearts give +Mult equal to 2x their rank when played. in 4 chance this card is destroyed at the end of each round
+
+Librarian
+Uncommon
+Create a tarot card if poker hand contains 3 scoring spades 
+(Must have room) 
+
+optical illusion (common)
+x2 mult. hearts do not count in scoring. suit changes every round.
+cost: $4
+(i couldn't figure out how to put the 'joker' text on the sides of the card, so if someone could do that for me that would be great) 
+
+Cursed Joker
+Rare
+$6
+X3 Mult. Give a random scoring card "Cursed" Edition at the end of each round.
+
+Transhumanism [Rare, $5]
+If first discard of round is exactly one Heart card, make the card Steel
+
+Hyperinflation [Rare, $1]
+Double your money after cashing out
+Lose all money when Blind is selected
+
+Rhythm Joker (Common)
+Each eighth card scored gives +50 chips 
+
+Calling Card (Rare Joker. basically Jimbo but with Jonkler Persona 5's outfit (he looks just like me I swear))
+When you play a card with only one scoring Heart, gain x1 mult. 
+
+Brimstone (uncommon, $5)
+x2 mult, every other hand played each round is debuffed
+(note that your first hand for each blind is always not debuffed) 
+
+Punk Joker (Uncommon, $5)
+Every 3rd hand you play has every scoring card earn +16 more chips permanently.
+Resets count if you play a Face Card. 
+
+Name: Mirror Joker
+Description: If played hand type is also held in hand, retrigger all played cards
+Rarity/cost: Uncommon, 5/6 gold 
+
+Card shark 
+Uncommon
+{$5)
+Makes 5 random enhanced cards on beating the boss blind.
+
+Wizard Tower
+Uncommon (maybe rare idk)
+$6-$8
+Whenever you play a hand that isn't your most played poker hand, upgrade the level of one random poker hand
+
+Ectospasm
+Rare
+$6
+Gain +.3x mult for every negative joker. 
+
+Thorned Tribute [Uncommon $6]
++1  Mult for Every Club Suit Discard 
+
+(Submission) White Deck
+-1 Joker Slot
++1 Consumable Slot, Hand and Discards
+
+Abyss Deck (deck submission)
+Level up all hands each ante. 
+Level up your most played hand another time.
+-1 Hand Size
+
+Tourist Trap [Uncommon, $6]
+You only skip the Shop when you skip a blind
+(note: clearly placeholder art, someone please make a better one (if you want)) 
+
+
+Lucky Sevens
+<Uncommon>
+$ 7
+This joker gives +7 mult for every 3 cards that have a suit of seven
+(Currently plus 5 mult)
+
+Octo-Joker - Common. Give +10 chips for every 8 played, scoring or not. ($4)
+
+Event Horizon - Rare. Each planet card upgrades 2 random other hands. ($8)
+
+LowTierJoker - Uncommon. For each card destroyed, gain +2 mult. (Destroyed, not sold.)($6)
+
+Life Lottery - Uncommon. Gain permament +17 mult for every hand with 3 scoring 7's. ($7)
+
+PowDeathCake - Rare. Gain permament mult equal to lowest rank. ($7)
+
+Serene Midnight - Uncommon. Each played clubs gains a permament +4 chips when played. ($5)
+
+Name: Redprint (blueprints cousin joker) 
+Rarity:Rare/legendary (most likely legendary)
+ It doesn't blueprint  exactly what  the cards to the right of it. Instead it copy's all cards  multi (either times or addative) and turns it into more mult.... However when negative it turns it into chips .... Can't be blueprinted or copied by brainstorm  (note any cards to the left of it can't be copied)
+(I used the art from the game and recoloured it, two varients)
+value at sell: 7 coins 
+
+Blue Java
+Uncommon, $5
++200 chips. 1 in 8 chance to be destroyed each round.
+
+Godori (Rare)
+When Blind is completed, you may choose to continue playing the Blind.
+
+Paint bucket 🪣 (rare)
+Will change the poker hand being played by adding a "Flush". 
+(Don't change a number of scoring card)
+High card , pair , two pair , three of a kind >> Flush
+Straight >> straight flush 
+Full house >> Flush house
+Five of a kind >> Flush five
+
+Paper-mache (uncommon)
+Will randomly choose a 1 joker to copy a skill (always choose skill that compatible)
+It will change every time the Joker that copy is destroyed or at the end of the round.
+
+Unbeatable
+Rare, 7$
+1 in 2 chance to discard any cards drawn below 7. (Spiteful Acrid gets credit for effect)
+
+Rare (or even Legendary)
+If a joker is destroyed, inherit it's properties.
+(Priority: Chips, Mult, Multiplicative Mult, Econ, Effect/Misc)
+
+Copycat
+Uncommon
+If first played hand contains 2 cards, randomly choose one to turn into the other (including ranks, suits, seals, enhancments, and editions) 
+
+The Dealer
+Uncommon
+disables a random joker (changes every hand), X3 mult (can't disable itself, and the joker who got disabled on winning hand stays disabled until blind is chosen)
+
+Pocket Joker (Rare)
+At the end of the shop,
+copy the ability of a
+Joker in the shop
+(changes each shop)
+
+Name: Solitaire Joker
+Effect: Straight Flushes can be made with alternating colors
+Rarity: Rare
+Cost: 7
+
+My idea for "Fly Trap"  Uncommon, $6
+Each round, it requires a different X rank card played to feed it. 
+The multiplier grows 1x for each played+scored X card you feed it
+Remove 1x multiplier if X rank card is discarded
+If you don't feed the joker in a round it will eat a random joker to the left or right 
+
+
+
+]]
 
 ----------------------------------------------
 ------------MOD CODE END----------------------
